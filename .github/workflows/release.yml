@@ -1,0 +1,50 @@
+name: Build & Publish QuaiVault Windows Release
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies & verify TypeScript build
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload Windows Standalone Bundle Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuaiVault-Windows-Standalone-Bundle
+          path: |
+            README.md
+            public/downloads/QuaiVault-Windows-GUI-Installer.bat
+            public/downloads/desktop-server.mjs
+            public/downloads/run-quai-wallet.bat
+            public/downloads/quai-wallet-win.mjs
+
+      - name: Create GitHub Release (on tag push)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            README.md
+            public/downloads/QuaiVault-Windows-GUI-Installer.bat
+            public/downloads/desktop-server.mjs
+            public/downloads/run-quai-wallet.bat
+            public/downloads/quai-wallet-win.mjs
+          generate_release_notes: true

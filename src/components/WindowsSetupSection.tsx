@@ -1534,6 +1534,203 @@ NODE_ENV=production pm2 start "npx tsx server.ts" --name quaivault`}
           </div>
         </section>
       </div>
+
+      {/* 4. GitHub Release Files & Publication Guide */}
+      <section className="bg-[#111827] border border-slate-800 rounded-xl p-6 space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+          <div className="space-y-1">
+            <div className="text-xs text-rose-400 font-medium">
+              Готовый комплект файлов в репозитории (public/downloads/ + README.md + GitHub Actions)
+            </div>
+            <h3 className="text-lg font-bold text-slate-100 font-display">
+              Файлы для скачивания и инструкция по публикации на GitHub
+            </h3>
+            <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">
+              В проект уже добавлены готовый файл описания <code className="font-mono text-slate-100">README.md</code>, сценарий автоматической сборки релизов <code className="font-mono text-slate-100">.github/workflows/release.yml</code> и папка <code className="font-mono text-slate-100">public/downloads/</code> со всеми установочниками для Windows.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            <a
+              href="/downloads/QuaiVault-Windows-GUI-Installer.bat"
+              download="QuaiVault-Windows-GUI-Installer.bat"
+              className="px-3.5 py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-500 rounded-lg transition-colors inline-flex items-center gap-1.5"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>QuaiVault-Windows-GUI-Installer.bat</span>
+            </a>
+            <a
+              href="/downloads/desktop-server.mjs"
+              download="desktop-server.mjs"
+              className="px-3.5 py-2 text-xs font-medium text-slate-100 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors inline-flex items-center gap-1.5"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>desktop-server.mjs</span>
+            </a>
+            <a
+              href="/downloads/README.md"
+              download="README.md"
+              className="px-3.5 py-2 text-xs font-medium text-slate-100 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors inline-flex items-center gap-1.5"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>README.md (Инструкция GitHub)</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Files Table inside Repository */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-800 text-xs text-slate-400 bg-[#0B0F17]/60">
+                <th className="py-3 px-4 font-medium">Файл в репозитории</th>
+                <th className="py-3 px-4 font-medium">Назначение для пользователей на GitHub</th>
+                <th className="py-3 px-4 font-medium text-right">Прямая загрузка</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800/70 text-xs">
+              <tr>
+                <td className="py-3 px-4 font-mono text-slate-200">/README.md</td>
+                <td className="py-3 px-4 text-slate-300">
+                  Главная документация репозитория на русском языке (возможности, безопасность, системные требования, ссылки на `.bat` и `.mjs`)
+                </td>
+                <td className="py-3 px-4 text-right">
+                  <a href="/downloads/README.md" download="README.md" className="text-rose-400 hover:underline font-medium">
+                    Скачать README.md
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-mono text-emerald-400">
+                  /public/downloads/QuaiVault-Windows-GUI-Installer.bat
+                </td>
+                <td className="py-3 px-4 text-slate-300">
+                  Установщик полного графического интерфейса для Windows 10/11 (ASCII + CRLF + автоустановка Node.js LTS + распаковка через certutil)
+                </td>
+                <td className="py-3 px-4 text-right">
+                  <a
+                    href="/downloads/QuaiVault-Windows-GUI-Installer.bat"
+                    download="QuaiVault-Windows-GUI-Installer.bat"
+                    className="text-rose-400 hover:underline font-medium"
+                  >
+                    Скачать .bat (GUI)
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-mono text-slate-200">/public/downloads/desktop-server.mjs</td>
+                <td className="py-3 px-4 text-slate-300">
+                  Однофайловый автономный локальный сервер со всеми 5 модулями (QI/QUAI баланс, QUAI → QI, История операций, Конвертер, Explorer)
+                </td>
+                <td className="py-3 px-4 text-right">
+                  <a
+                    href="/downloads/desktop-server.mjs"
+                    download="desktop-server.mjs"
+                    className="text-rose-400 hover:underline font-medium"
+                  >
+                    Скачать .mjs (GUI)
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-mono text-slate-200">/public/downloads/run-quai-wallet.bat</td>
+                <td className="py-3 px-4 text-slate-300">
+                  Лаунчер консольной версии кошелька для Windows CMD / PowerShell
+                </td>
+                <td className="py-3 px-4 text-right">
+                  <a
+                    href="/downloads/run-quai-wallet.bat"
+                    download="run-quai-wallet.bat"
+                    className="text-rose-400 hover:underline font-medium"
+                  >
+                    Скачать .bat (CLI)
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-mono text-slate-200">/public/downloads/quai-wallet-win.mjs</td>
+                <td className="py-3 px-4 text-slate-300">
+                  Консольный скрипт проверки баланса QI и QUAI в USD ($) и рублях ЦБ РФ (₽)
+                </td>
+                <td className="py-3 px-4 text-right">
+                  <a
+                    href="/downloads/quai-wallet-win.mjs"
+                    download="quai-wallet-win.mjs"
+                    className="text-rose-400 hover:underline font-medium"
+                  >
+                    Скачать .mjs (CLI)
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-mono text-amber-300">/.github/workflows/release.yml</td>
+                <td className="py-3 px-4 text-slate-300">
+                  GitHub Actions пайплайн: автоматически проверяет сборку и прикрепляет `.bat` и `.mjs` файлы в раздел GitHub Releases при создании тега `v1.0.0`
+                </td>
+                <td className="py-3 px-4 text-right text-emerald-400 font-mono">Включен в проект</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Two ways to publish to GitHub */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+          <div className="bg-[#0B0F17] border border-slate-800 rounded-xl p-5 space-y-3">
+            <div className="text-xs text-emerald-400 font-semibold">
+              Способ 1: Публикация в 1 клик через верхнюю панель AI Studio
+            </div>
+            <ol className="space-y-2 text-xs text-slate-300 leading-relaxed list-decimal list-inside">
+              <li>
+                На верхней панели Google AI Studio нажмите иконку <strong>GitHub (Save to GitHub / Export to GitHub)</strong>.
+              </li>
+              <li>
+                Авторизуйте ваш аккаунт GitHub и укажите имя нового репозитория (например, <code className="font-mono text-slate-100">quaivault-wallet</code>).
+              </li>
+              <li>
+                Весь обезличенный код проекта вместе с <code className="font-mono text-slate-100">README.md</code>, <code className="font-mono text-slate-100">.github/workflows/release.yml</code> и папкой <code className="font-mono text-slate-100">public/downloads/</code> будет автоматически опубликован в вашем репозитории!
+              </li>
+            </ol>
+          </div>
+
+          <div className="bg-[#0B0F17] border border-slate-800 rounded-xl p-5 space-y-3">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-rose-400 font-semibold">
+                Способ 2: Загрузка через Git в терминале и выпуск релиза v1.0.0
+              </span>
+              <button
+                type="button"
+                onClick={() =>
+                  copyCommand(
+                    'git init && git add . && git commit -m "Initial public release of QuaiVault QI/QUAI Wallet" && git branch -M main && git remote add origin https://github.com/YOUR_USERNAME/quaivault-wallet.git && git push -u origin main && git tag v1.0.0 && git push origin v1.0.0',
+                    'gh-push-cmd'
+                  )
+                }
+                className="text-rose-400 hover:text-rose-300 inline-flex items-center gap-1 cursor-pointer"
+              >
+                {copiedCmd === 'gh-push-cmd' ? (
+                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                ) : (
+                  <Copy className="w-3.5 h-3.5" />
+                )}
+                <span>Копировать команды</span>
+              </button>
+            </div>
+            <pre className="text-slate-200 font-mono text-[11px] overflow-x-auto leading-relaxed">
+{`git init
+git add .
+git commit -m "Initial public release of QuaiVault QI/QUAI Wallet"
+git branch -M main
+git remote add origin https://github.com/<ВАШ_ЛОГИН>/quaivault-wallet.git
+git push -u origin main
+
+# Автоматическое создание GitHub Release с прикреплением .bat и .mjs файлов:
+git tag v1.0.0
+git push origin v1.0.0`}
+            </pre>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
+
